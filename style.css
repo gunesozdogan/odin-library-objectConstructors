@@ -1,0 +1,79 @@
+:root {
+    font-size: 10px;
+    --main-font-color: #eee;
+    --main-bg-color: rgb(34, 34, 34);
+    --sec-bg-color: rgb(105, 105, 105);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: #eee;
+    font-family: "roboto", sans-serif;
+}
+
+.main-container {
+    display: Flex;
+    flex-direction: column;
+    height: 100vh;
+}
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex: 1;
+    background: #000;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+.add {
+    background: rgb(105, 105, 105);
+    color: #eee;
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    border-radius: 1.5rem;
+    border: none;
+    cursor: pointer;
+    height: 35%;
+    display: flex;
+    align-items: center;
+}
+
+.add:hover {
+    background: rgb(138, 138, 138);
+}
+
+.cards-container {
+    background: var(--main-bg-color);
+    flex: 7;
+    padding: 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(400px, 1fr));
+    align-items: center;
+    justify-items: center;
+}
+
+/* CARDS */
+.card {
+    background-color: rgb(102, 102, 102);
+    font-size: 2rem;
+    height: 40rem;
+    width: 40rem;
+    display: Flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+    border-radius: 2rem;
+}
+
+.card:hover {
+    background: #555;
+}
+.card h2 {
+    font-size: 3rem;
+}
