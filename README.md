@@ -4,4 +4,4 @@
 
 <a href="https://gunesozdogan.github.io/odin-TV-Series-objectConstructors/" name="demo">Live Demo</a>
 
-<img src="ksnip_20220522-203910.png"/>
+<img src="img/ksnip_20220522-203910.png"/>
