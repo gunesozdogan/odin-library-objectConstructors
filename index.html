@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Odin Project: Collection</title>
+        <title>Odin Project: TV-Series-Collection</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -15,13 +15,63 @@
         <script src="script.js" defer></script>
     </head>
     <body>
-        <div class="main-container">
-            <header>
-                <h1>TV Series Collection</h1>
-                <button class="add">Add New Series</button>
-            </header>
+        <div class="container">
+            <div class="main-container">
+                <div class="overlay-container"></div>
+                <header>
+                    <h1>TV Series Collection</h1>
+                    <button class="add">Add New Series</button>
+                </header>
+                <div class="cards-container"></div>
+            </div>
 
-            <div class="cards-container"></div>
+            <div class="add-new-series hidden">
+                <form class="add-new-series-form">
+                    <h2>Add New TV Series</h2>
+
+                    <input
+                        class="title"
+                        type="text"
+                        name="title"
+                        placeholder="Title"
+                    />
+
+                    <input
+                        class="years"
+                        type="text"
+                        name="years"
+                        placeholder="Years Between e.g.2006-2013"
+                    />
+                    <input
+                        class="director"
+                        type="text"
+                        name="director"
+                        placeholder="Director"
+                    />
+                    <input
+                        class="total-seasons"
+                        type="text"
+                        name="total_seasons"
+                        placeholder="Total Seasons"
+                    />
+                    <input
+                        class="imdb-rate"
+                        type="text"
+                        name="imdb_rate"
+                        placeholder="IMDB Rate"
+                    />
+                    <div class="checkbox">
+                        <label for="watched_it">Have You Watched It?</label>
+                        <input
+                            class="is-it-watched"
+                            type="checkbox"
+                            id="watched_it"
+                        />
+                    </div>
+
+                    <button type="button" class="add-form">Add</button>
+                </form>
+            </div>
         </div>
     </body>
 </html>

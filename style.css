@@ -1,16 +1,21 @@
 :root {
     font-size: 10px;
-    --main-font-color: #eee;
-    --main-bg-color: rgb(34, 34, 34);
-    --sec-bg-color: rgb(105, 105, 105);
+    --main-font-color: #000;
+    --main-bg-color: #fff;
+    --sec-bg-color: #eee;
+    --third-bg-color: rgb(87, 231, 231);
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    color: #eee;
+    color: var(--main-font-color);
     font-family: "roboto", sans-serif;
+}
+
+.container {
+    position: relative;
 }
 
 .main-container {
@@ -18,62 +23,193 @@
     flex-direction: column;
     height: 100vh;
 }
+
 header {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    flex: 1;
-    background: #000;
+    background: var(--sec-bg-color);
+    height: 10vh;
+    color: #000;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border-bottom: 0.4rem solid var(--third-bg-color);
 }
 
 h1 {
     font-size: 4rem;
+    color: #000;
 }
 
 .add {
-    background: rgb(105, 105, 105);
-    color: #eee;
+    background: var(--third-bg-color);
+    color: var(--main-font-color);
     font-size: 2rem;
-    padding: 1rem 2rem;
+    padding: 2rem 4rem;
     border-radius: 1.5rem;
     border: none;
     cursor: pointer;
     height: 35%;
     display: flex;
     align-items: center;
+    font-weight: 500;
 }
 
 .add:hover {
-    background: rgb(138, 138, 138);
+    background: rgb(75, 199, 199);
+    cursor: pointer;
+}
+
+.add:focus {
+    outline: none;
 }
 
 .cards-container {
     background: var(--main-bg-color);
-    flex: 7;
+    height: 90vh;
     padding: 5rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(400px, 1fr));
     align-items: center;
     justify-items: center;
+    gap: 4rem;
 }
 
 /* CARDS */
 .card {
-    background-color: rgb(102, 102, 102);
-    font-size: 2rem;
-    height: 40rem;
-    width: 40rem;
+    background-color: var(--sec-bg-color);
+    font-size: 1.8rem;
+    height: 30rem;
+    width: 30rem;
     display: Flex;
     flex-direction: column;
-    gap: 2rem;
-    padding: 1rem;
-    border-radius: 2rem;
+    gap: 1.5rem;
+    padding: 3rem;
+    border-radius: 1rem;
+    align-items: left;
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.2);
 }
 
-.card:hover {
-    background: #555;
+.card button {
+    padding: 1rem;
+    font-size: 1.7rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 1rem;
 }
+
 .card h2 {
+    font-size: 2.5rem;
+}
+
+.card-remove-btn {
+    background: #666;
+    color: #eee;
+}
+
+.card-remove-btn:hover {
+    background-color: #333;
+    cursor: pointer;
+}
+
+.card-watched-btn {
+    background: var(--third-bg-color);
+}
+
+.card-watched-btn:hover {
+    background: rgb(75, 199, 199);
+    cursor: pointer;
+}
+
+/* ADD NEW SERIES FORM */
+.add-new-series {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 0.4rem solid var(--third-bg-color);
+    padding: 4rem 2rem;
+    background-color: var(--sec-bg-color);
+    z-index: 9000;
+}
+
+.add-new-series-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 8000;
+}
+
+.add-new-series-form h2 {
+    margin-bottom: 2rem;
+    align-self: center;
     font-size: 3rem;
+    color: var(--main-font-color);
+    font-weight: 700;
+}
+
+.add-new-series-form input {
+    padding: 1rem;
+    width: 36rem;
+    border-radius: 1rem;
+    font-size: 1.8rem;
+    border: none;
+    font-weight: 500;
+}
+
+.add-new-series-form :placeholder-shown {
+    font-weight: 200;
+}
+
+.add-new-series-form input:focus {
+    outline: none;
+}
+
+.checkbox {
+    display: flex;
+    font-size: 1.8rem;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 1rem 0;
+}
+.checkbox input {
+    width: 2rem;
+    height: 2rem;
+    accent-color: var(--third-bg-color);
+}
+
+.add-new-series button {
+    padding: 2rem 2rem;
+    width: 24rem;
+    height: 4rem;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--third-bg-color);
+    font-size: 2rem;
+    border: none;
+    border-radius: 1rem;
+    font-weight: 500;
+}
+
+.add-new-series button:hover {
+    background: rgb(75, 199, 199);
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 8000;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hidden {
+    visibility: hidden;
 }
