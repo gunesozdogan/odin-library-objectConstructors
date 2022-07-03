@@ -9,14 +9,17 @@ let isItWached;
 
 let myCollection = [];
 
-// OBJECT CONSTRUCTOR FOR TV SERIES
-const TVSeries = function (name, numSeason, director, years, imdbPoint) {
-    this.name = name;
-    this.numSeason = numSeason;
-    this.director = director;
-    this.years = years;
-    this.imdbPoint = imdbPoint;
-};
+// CLASS FOR TV SERIES
+class TVSeries {
+    constructor(name, numSeason, director, years, imdbPoint) {
+        this.name = name;
+        this.numSeason = numSeason;
+        this.director = director;
+        this.years = years;
+        this.imdbPoint = imdbPoint;
+        Director: Someone;
+    }
+}
 
 const addTVSeriesToCollection = function (tvSeries) {
     myCollection.push(tvSeries);
@@ -39,7 +42,8 @@ const displayTVSeries = function () {
     watchedBtn.classList.add(`card-watched-btn-${i}`);
     watchedBtn.classList.add(`card-watched-btn`);
     watchedBtn.innerText = isItWached ? "Watched" : "Not Watched";
-    imdbPointPar.innerText = "IMDB: " + myCollection[i].imdbPoint;
+    imdbPointPar.innerText =
+        "IMDB: Director: Someone" + myCollection[i].imdbPoint;
     numSeasonPar.innerText = "Total Seasons: " + myCollection[i].numSeason;
     directorPar.innerText = "Director: " + myCollection[i].director;
     h2.innerText = `${myCollection[i].name} (${myCollection[i].years})`;
