@@ -11,7 +11,7 @@
     margin: 0;
     padding: 0;
     color: var(--main-font-color);
-    font-family: "roboto", sans-serif;
+    font-family: 'roboto', sans-serif;
 }
 
 .container {
@@ -212,4 +212,8 @@ h1 {
 
 .hidden {
     visibility: hidden;
+}
+
+.years:invalid {
+    box-shadow: 0 0 5px 1px red;
 }

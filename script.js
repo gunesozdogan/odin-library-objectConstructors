@@ -1,9 +1,9 @@
-const addNewSeriesForm = document.querySelector(".add-new-series");
-const overlayContainer = document.querySelector(".overlay-container");
-const cardsContainer = document.querySelector(".cards-container");
-const addNewSeriesBtn = document.querySelector(".add");
-const mainContainer = document.querySelector(".main-container");
-const formAddBtn = document.querySelector(".add-form");
+const addNewSeriesForm = document.querySelector('.add-new-series');
+const overlayContainer = document.querySelector('.overlay-container');
+const cardsContainer = document.querySelector('.cards-container');
+const addNewSeriesBtn = document.querySelector('.add');
+const mainContainer = document.querySelector('.main-container');
+const formAddBtn = document.querySelector('.add-form');
 let watchedBtn;
 let isItWached;
 
@@ -25,23 +25,23 @@ const addTVSeriesToCollection = function (tvSeries) {
 const displayTVSeries = function () {
     // SHOWS THE LAST ITEM OF COLLECTION AS A CARD
     let i = myCollection.length - 1;
-    const div = document.createElement("div");
-    div.classList.add("card");
-    const h2 = document.createElement("h2");
-    const directorPar = document.createElement("p");
-    const numSeasonPar = document.createElement("p");
-    const imdbPointPar = document.createElement("p");
-    const watchedBtn = document.createElement("button");
-    const removeBtn = document.createElement("button");
+    const div = document.createElement('div');
+    div.classList.add('card');
+    const h2 = document.createElement('h2');
+    const directorPar = document.createElement('p');
+    const numSeasonPar = document.createElement('p');
+    const imdbPointPar = document.createElement('p');
+    const watchedBtn = document.createElement('button');
+    const removeBtn = document.createElement('button');
 
-    removeBtn.innerText = "Remove";
-    removeBtn.classList.add("card-remove-btn");
+    removeBtn.innerText = 'Remove';
+    removeBtn.classList.add('card-remove-btn');
     watchedBtn.classList.add(`card-watched-btn-${i}`);
     watchedBtn.classList.add(`card-watched-btn`);
-    watchedBtn.innerText = isItWached ? "Watched" : "Not Watched";
-    imdbPointPar.innerText = "IMDB: " + myCollection[i].imdbPoint;
-    numSeasonPar.innerText = "Total Seasons: " + myCollection[i].numSeason;
-    directorPar.innerText = "Director: " + myCollection[i].director;
+    watchedBtn.innerText = isItWached ? 'Watched' : 'Not Watched';
+    imdbPointPar.innerText = 'IMDB: ' + myCollection[i].imdbPoint;
+    numSeasonPar.innerText = 'Total Seasons: ' + myCollection[i].numSeason;
+    directorPar.innerText = 'Director: ' + myCollection[i].director;
     h2.innerText = `${myCollection[i].name} (${myCollection[i].years})`;
 
     div.appendChild(h2);
@@ -54,30 +54,30 @@ const displayTVSeries = function () {
 
     const toggleWatched = function () {
         this.innerText =
-            this.innerText === "Watched" ? "Not Watched" : "Watched";
+            this.innerText === 'Watched' ? 'Not Watched' : 'Watched';
     };
 
     const removeCard = function () {
         cardsContainer.removeChild(div);
     };
-    watchedBtn.addEventListener("click", toggleWatched);
-    removeBtn.addEventListener("click", removeCard);
+    watchedBtn.addEventListener('click', toggleWatched);
+    removeBtn.addEventListener('click', removeCard);
 };
 
 // EVENT LISTENER FUNCTIONS
 const toggleAddingForm = function () {
-    overlayContainer.classList.toggle("overlay");
-    addNewSeriesForm.classList.toggle("hidden");
+    overlayContainer.classList.toggle('overlay');
+    addNewSeriesForm.classList.toggle('hidden');
 };
 
 // CREATES NEW TV SERIES WITH THE ENTERED INFORMATION
 const addSeries = function () {
-    const newSeriesTitle = document.querySelector(".title");
-    const newSeriesYears = document.querySelector(".years");
-    const newSeriesDirector = document.querySelector(".director");
-    const newSeriesTotalSeasons = document.querySelector(".total-seasons");
-    const newSeriesIMDBRate = document.querySelector(".imdb-rate");
-    isItWached = document.querySelector(".is-it-watched").checked;
+    const newSeriesTitle = document.querySelector('.title');
+    const newSeriesYears = document.querySelector('.years');
+    const newSeriesDirector = document.querySelector('.director');
+    const newSeriesTotalSeasons = document.querySelector('.total-seasons');
+    const newSeriesIMDBRate = document.querySelector('.imdb-rate');
+    isItWached = document.querySelector('.is-it-watched').checked;
 
     addTVSeriesToCollection(
         new TVSeries(
@@ -89,33 +89,75 @@ const addSeries = function () {
         )
     );
 
+    function checkValidation() {
+        let valid = true;
+
+        if (newSeriesTitle.validity.valueMissing) {
+            newSeriesTitle.setCustomValidity('Enter a title');
+            newSeriesTitle.reportValidity();
+            valid = false;
+            return valid;
+        }
+
+        if (!newSeriesYears.validity.valid) {
+            newSeriesYears.setCustomValidity('Enter a value between 1900-2100');
+            newSeriesYears.reportValidity();
+            valid = false;
+            return valid;
+        }
+
+        if (newSeriesDirector.validity.valueMissing) {
+            newSeriesDirector.setCustomValidity('Enter a director');
+            newSeriesDirector.reportValidity();
+            valid = false;
+            return valid;
+        }
+
+        if (newSeriesTotalSeasons.validity.valueMissing) {
+            newSeriesTotalSeasons.setCustomValidity('Enter a totalSeason');
+            newSeriesTotalSeasons.reportValidity();
+            valid = false;
+            return valid;
+        }
+
+        if (newSeriesIMDBRate.validity.valueMissing) {
+            newSeriesIMDBRate.setCustomValidity('Enter a imdbRate');
+            newSeriesIMDBRate.reportValidity();
+            valid = false;
+            return valid;
+        }
+    }
+
+    // CHECKS IF ANY FORM VALIDATION
+    if (!checkValidation()) return;
+
     // RESETS THE CARDS
     displayTVSeries();
     toggleAddingForm();
-    newSeriesTitle.value = "";
-    newSeriesDirector.value = "";
-    newSeriesTotalSeasons.value = "";
-    newSeriesIMDBRate.value = "";
-    newSeriesYears.value = "";
-    document.querySelector(".is-it-watched").checked = false;
+    newSeriesTitle.value = '';
+    newSeriesDirector.value = '';
+    newSeriesTotalSeasons.value = '';
+    newSeriesIMDBRate.value = '';
+    newSeriesYears.value = '';
+    document.querySelector('.is-it-watched').checked = false;
 };
 
 const closeFormClick = function () {
-    if (overlayContainer.classList.contains("overlay")) {
+    if (overlayContainer.classList.contains('overlay')) {
         toggleAddingForm();
     }
 };
 
 const closeFormKey = function (e) {
-    if (e.key === "Escape") {
-        if (overlayContainer.classList.contains("overlay")) {
+    if (e.key === 'Escape') {
+        if (overlayContainer.classList.contains('overlay')) {
             toggleAddingForm();
         }
     }
 };
 
 // ADDING EVENT LISTENERS
-addNewSeriesBtn.addEventListener("click", toggleAddingForm);
-formAddBtn.addEventListener("click", addSeries);
-overlayContainer.addEventListener("click", closeFormClick);
-document.addEventListener("keyup", closeFormKey);
+addNewSeriesBtn.addEventListener('click', toggleAddingForm);
+formAddBtn.addEventListener('click', addSeries);
+overlayContainer.addEventListener('click', closeFormClick);
+document.addEventListener('keyup', closeFormKey);

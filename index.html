@@ -26,7 +26,7 @@
             </div>
 
             <div class="add-new-series hidden">
-                <form class="add-new-series-form">
+                <form class="add-new-series-form" novalidate>
                     <h2>Add New TV Series</h2>
 
                     <input
@@ -34,6 +34,7 @@
                         type="text"
                         name="title"
                         placeholder="Title"
+                        required
                     />
 
                     <input
@@ -41,24 +42,29 @@
                         type="text"
                         name="years"
                         placeholder="Years Between e.g.2006-2013"
+                        pattern="^(19|20)\d{2}$"
+                        required
                     />
                     <input
                         class="director"
                         type="text"
                         name="director"
                         placeholder="Director"
+                        required
                     />
                     <input
                         class="total-seasons"
                         type="text"
                         name="total_seasons"
                         placeholder="Total Seasons"
+                        required
                     />
                     <input
                         class="imdb-rate"
                         type="text"
                         name="imdb_rate"
                         placeholder="IMDB Rate"
+                        required
                     />
                     <div class="checkbox">
                         <label for="watched_it">Have You Watched It?</label>
